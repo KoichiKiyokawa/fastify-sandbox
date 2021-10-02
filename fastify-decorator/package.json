@@ -5,7 +5,10 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "nodemon --watch src --ext ts --exec 'tsc && node dist'"
+    "start": "node dist",
+    "dev": "nodemon --watch src --ext ts --exec 'tsc && node dist'",
+    "build": "rm -rf dist && tsc",
+    "deploy": "yarn build && gcloud app deploy --project kiyo-dev-944"
   },
   "dependencies": {
     "@fastify/session": "^6.2.0",

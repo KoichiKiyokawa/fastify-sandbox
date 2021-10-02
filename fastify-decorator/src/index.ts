@@ -27,4 +27,4 @@ instance.register(fastifySession, {
 })
 
 // Run the server!
-instance.listen(3000)
+instance.listen({ port: Number(process.env.PORT ?? 3000), host: "0.0.0.0" })
