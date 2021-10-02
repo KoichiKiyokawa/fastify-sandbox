@@ -5,7 +5,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "nodemon --watch src --exec 'ts-node-dev'"
+    "dev": "nodemon --watch src --ext ts --exec 'tsc && node dist'"
   },
   "dependencies": {
     "@fastify/session": "^6.2.0",
@@ -13,7 +13,8 @@
     "fastify": "^3.22.0",
     "fastify-cookie": "^5.3.1",
     "fastify-decorators": "^3.10.0",
-    "http-errors": "^1.8.0"
+    "http-errors": "^1.8.0",
+    "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
     "@types/http-errors": "^1.8.1",

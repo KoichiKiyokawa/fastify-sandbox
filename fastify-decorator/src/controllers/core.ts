@@ -3,9 +3,9 @@ import { Hook } from "fastify-decorators"
 import createHttpError from "http-errors"
 
 export class AuthorizedController {
-  @Hook("onRequest")
-  async onRequest(req: FastifyRequest) {
-    console.log("onRequest")
+  @Hook("preValidation")
+  async preValidation(req: FastifyRequest) {
+    console.log("preValidation")
     if (req.session.user == null) throw new createHttpError.Unauthorized()
   }
 }
