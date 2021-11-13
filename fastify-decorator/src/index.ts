@@ -4,17 +4,15 @@ import fastifyCookie from "fastify-cookie"
 import { bootstrap } from "fastify-decorators"
 import { resolve } from "path"
 import "reflect-metadata"
+import AuthController from "./controllers/auth.controller"
+import UserController from "./controllers/user.controller"
 
 // Require the framework and instantiate it
 const instance = fastify()
 
 // Register handlers auto-bootstrap
 instance.register(bootstrap, {
-  // Specify directory with our controllers
-  directory: resolve(__dirname),
-
-  // Specify mask to match only our controllers
-  mask: /\.controller\./,
+  controllers: [AuthController, UserController],
 })
 
 instance.register(fastifyCookie)
