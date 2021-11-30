@@ -1,9 +1,7 @@
+import { FastifyRequest } from "fastify"
+
 export interface Context {
   reply: {
-    request: {
-      session: {
-        userId: string
-      }
-    }
+    request: FastifyRequest
   }
 }

@@ -4,6 +4,7 @@ import { db } from "../utilts/db"
 import bcrypt from "bcryptjs"
 import { UserEntity } from "../domains/user"
 import { Context } from "../types/context"
+import { MessageResponse } from "../objects/message-response"
 
 @Resolver()
 export class AuthResolver {
@@ -19,6 +20,21 @@ export class AuthResolver {
     if (!ok) throw new Error("Password is incorrect")
     ctx.reply.request.session.userId = targetUser.id
     return new UserEntity(targetUser).toJSON()
+  }
+
+  @Query(() => MessageResponse)
+  async logout(@Ctx() ctx: Context): Promise<MessageResponse> {
+    const { request } = ctx.reply
+    if (request.session.userId == null) return { message: "already logged out" }
+    request.session.userId = null
+    await new Promise((resolve, reject) => {
+      request.sessionStore.destroy(request.session.sessionId, (err) => {
+        if (err) reject(err)
+        else resolve(null)
+      })
+    })
+
+    return { message: "ok" }
   }
 
   @Query(() => User)
