@@ -1,0 +1,35 @@
+{
+  "name": "fastify-typegraphql-prisma",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "concurrently": "^6.4.0",
+    "esbuild-register": "^3.2.0",
+    "fastify-cli": "^2.14.0",
+    "prisma": "^3.5.0",
+    "ts-node": "^10.4.0",
+    "typegraphql-prisma": "^0.18.0",
+    "typescript": "^4.5.2"
+  },
+  "dependencies": {
+    "@prisma/client": "^3.5.0",
+    "bcryptjs": "^2.4.3",
+    "class-validator": "^0.13.2",
+    "fastify": "^3.24.1",
+    "graphql": "^15.7.2",
+    "mercurius": "^8.11.0",
+    "reflect-metadata": "^0.1.13",
+    "rhodash": "^1.4.0",
+    "type-graphql": "^1.1.1"
+  },
+  "prisma": {
+    "seed": "node --require esbuild-register prisma/seed.ts"
+  }
+}
