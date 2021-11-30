@@ -10,7 +10,7 @@ export class AuthResolver {
   @Query(() => User)
   async login(
     @Arg("email") email: string,
-    @Arg("passowrd") password: string,
+    @Arg("password") password: string,
     @Ctx() ctx: Context
   ) {
     const targetUser = await db.user.findFirst({ where: { email } })
