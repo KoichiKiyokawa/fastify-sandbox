@@ -25,6 +25,9 @@ async function bootstrap() {
   app.register(fastifyCookie)
   app.register(fastifySession, {
     secret: "a secret with minimum length of 32 characters",
+    cookie: {
+      secure: process.env.NODE_ENV === "production",
+    },
   })
   const schema = await buildSchema({
     resolvers: [...resolvers, AuthResolver],
